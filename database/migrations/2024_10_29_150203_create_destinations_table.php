@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('destinations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('type');
+            $table->text('description');
+            $table->text('img_url');
+            $table->float('trip_duration')->unsigned();
+            $table->float('avg_vote')->unsigned();
+            $table->integer('tot_person_vote')->unsigned()->nullable();
+            $table->float('price')->unsigned();
             $table->timestamps();
         });
     }
