@@ -118,7 +118,7 @@ class DestinationSeeder extends Seeder
 public function run(): void
 {
     foreach ($this->destinations as $destination) {
-        $newDestination = Destination::create($destination);
+        Destination::create($destination);
     }
 }
 }
