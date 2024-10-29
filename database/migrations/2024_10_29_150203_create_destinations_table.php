@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('type');
             $table->text('description');
             $table->text('img_url');
-            $table->float('trip_duration')->unsigned();
+            $table->string('trip_duration');
             $table->float('avg_vote')->unsigned();
             $table->integer('tot_person_vote')->unsigned()->nullable();
             $table->float('price')->unsigned();
