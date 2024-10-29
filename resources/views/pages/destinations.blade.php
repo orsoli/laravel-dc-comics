@@ -34,7 +34,7 @@
                                 <span class="text-dark fs-6">per person</span>
                             </p>
                         </div>
-                        <a href="{{route('show_destination',$destination->id)}}"
+                        <a href="{{route('destinations.show',$destination->id)}}"
                             class="btn btn-outline text-primary">More info...</a>
                     </div>
                 </div>
