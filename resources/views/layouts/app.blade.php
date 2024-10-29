@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Orsol Filaj">
-        <meta name="description" content="@yield('page-description', 'Page Description')">
 
-        {{-- Links --}}
-        <link rel="shortcut icon" href= "@yield('favicon')">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Orsol Filaj">
+    <meta name="description" content="@yield('page-description', 'Page Description')">
 
-        {{-- CDN links  --}}
-        @yield('add-cdn')
+    {{-- Links --}}
+    <link rel="shortcut icon" href="DailyTrip-logo.png">
 
-        <title>@yield('page-name', 'Page Title')</title>
+    {{-- CDN links --}}
+    @yield('add-cdn')
+
+    <title>@yield('page-name', 'Page Title')</title>
 
 
-    </head>
-    <body>
-        {{-- Header  --}}
-        @include('partials.header')
+</head>
 
-        {{-- Main  --}}
-        @yield('main-content')
+<body>
+    {{-- Header --}}
+    @include('partials.header')
 
-        {{-- Footer  --}}
-        @include('partials.footer')
+    {{-- Main --}}
+    @yield('main-content')
 
-        {{-- Integrate app.js  --}}
-        @vite("resources/js/app.js")
+    {{-- Footer --}}
+    @include('partials.footer')
 
-        {{-- Integrate scripts  --}}
-        @yield('add-script')
+    {{-- Integrate app.js --}}
+    @vite("resources/js/app.js")
 
-    </body>
+    {{-- Integrate scripts --}}
+    @yield('add-script')
+
+</body>
+
 </html>

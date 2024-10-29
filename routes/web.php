@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DestinationController::class,'index'])->name('home');
+Route::get('/', [DestinationController::class,'index'])->name('destinations');
+Route::get('/pages/show_destination/{id}', [DestinationController::class,'show'])->name('show_destination');

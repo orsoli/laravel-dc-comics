@@ -11,6 +11,11 @@ class DestinationController extends Controller
 
         $destinations = Destination::all();
 
-        return view('pages.home',compact('destinations'));
+        return view('pages.destinations',compact('destinations'));
+    }
+
+    public function show($id){
+        $destination = Destination::findOrFail($id);
+        return view('pages.show_destination', compact('destination'));
     }
 }
