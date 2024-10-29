@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Orsol Filaj">
         <meta name="description" content="@yield('page-description', 'Page Description')">
-        @yield('add-meta')
+
+        {{-- Links --}}
+        <link rel="shortcut icon" href= "@yield('favicon')">
 
         {{-- CDN links  --}}
         @yield('add-cdn')
@@ -19,9 +21,7 @@
         @include('partials.header')
 
         {{-- Main  --}}
-        <main>
-            @yield('main-content')
-        </main>
+        @yield('main-content')
 
         {{-- Footer  --}}
         @include('partials.footer')
