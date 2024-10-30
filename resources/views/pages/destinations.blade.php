@@ -4,7 +4,7 @@
 {{-- Page description --}}
 @section('page-description', 'Daily Trip home page')
 {{-- Page Title --}}
-@section('page-name', 'Dayli Trip')
+@section('page-name', 'Daily Trip')
 
 {{-- Main --}}
 @section('main-content')
