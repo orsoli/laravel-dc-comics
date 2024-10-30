@@ -1,17 +1,20 @@
 @extends('layouts.app')
 
-@section('page-description', 'Create new Destination')
-@section('page-name', 'Create Destination')
+@section('page-description', 'Edit Destination')
+@section('page-name', 'Edit Destination')
 
 @section('main-content')
 <main>
     <div class="container d-flex flex-column justify-content-center align-items-center">
         <div class="title">
-            <h1 class="py-5">Create new Destination</h1>
+            <h1 class="py-5">Edit Destination</h1>
         </div>
         <div class="create-form">
-            <form action="{{route('destinations.store')}}" method="post" class="form-control mb-5 shadow">
+            <form action="{{route('destinations.update', $destination->id)}}" method="POST"
+                class="form-control mb-5 shadow">
                 @csrf
+                @method('PUT')
+
                 <div class="inputs p-2">
                     <input class="form-control my-2" type="text" name="name" value="{{$destination->name}}">
                     <input class="form-control my-2" type="text" name="type" value="{{$destination->type}}">

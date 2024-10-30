@@ -15,6 +15,7 @@ class DestinationController extends Controller
 
         return view('destinations.index',compact('destinations'));
     }
+
     public function show($id){
         $destination = Destination::findOrFail($id);
         return view('destinations.show', compact('destination'));
@@ -61,6 +62,28 @@ class DestinationController extends Controller
     public function edit(string $id){
         $destination = Destination::findOrFail($id);
         return view('destinations.edit', compact('destination'));
+    }
+
+    public function update(Request $request, $id){
+
+        // Find the specific destinaiton with id
+        $destination = Destination::findOrFail($id);
+
+        // Update from Destination Model
+        $destination->name = $request->input('name');
+        $destination->type = $request->input('type');
+        $destination->description = $request->input('description');
+        $destination->img_url = $request->input('img_url');
+        $destination->trip_duration = $request->input('trip_duration');
+        $destination->avg_vote = $request->input('avg_vote');
+        $destination->tot_person_vote = $request->input('tot_person_vote');
+        $destination->price = $request->input('price');
+
+        // Save destination data në DB
+        $destination->update();
+
+        // Redirect after save
+        return redirect()->route('destinations.index');
     }
 
 }
