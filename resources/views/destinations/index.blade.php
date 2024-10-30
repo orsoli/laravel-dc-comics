@@ -45,44 +45,10 @@
             Destinations
         </h1>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-sm btn-outline-primary mb-3" data-bs-toggle="modal"
-            data-bs-target="#createDestinationModal">
+        <!-- Create destination Button-->
+        <a href="{{route('destinations.create')}}" type="button" class="btn btn-sm btn-outline-primary mb-3">
             Create new Destination
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="createDestinationModal" tabindex="-1" aria-labelledby="createDestinationModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="createDestinationModalLabel">Create new Destination</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{route('destinations.store')}}" method="post">
-                            @csrf
-                            <input class="form-control my-2" type="text" placeholder="Destinaiton Name" name="name">
-                            <input class="form-control my-2" type="text" placeholder="Destinaiton type" name="type">
-                            <textarea id="description" name="description" rows="3" cols="50"
-                                placeholder="Destination description"></textarea>
-                            <input class="form-control my-2" type="url" placeholder="Destinaiton img" name="img_url">
-                            <input class="form-control my-2" type="text" placeholder="Trip duration"
-                                name="trip_duration">
-                            <input class="form-control my-2" type="number" placeholder="Destination avg Vote"
-                                name="avg_vote">
-                            <input class="form-control my-2" type="number" placeholder="Destination TOT persons vote"
-                                name="tot_person_vote">
-                            <input class="form-control my-2" type="number" placeholder="Price" name="price">
-                            <button type="submit" class="btn btn-primary">Save destination</button>
-                            <button type="reset" class="btn btn-warning">reset</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        </a>
         <table class="table">
             <thead>
                 <tr>
