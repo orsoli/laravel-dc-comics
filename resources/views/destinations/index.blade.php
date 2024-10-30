@@ -62,3 +62,6 @@
     </div>
 </main>
 @endsection
+@section('add-script')
+@vite('resources/js/delete_destination.js')
+@endsection
