@@ -49,8 +49,8 @@
                             class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger" type="submit" value="delete"><i
-                                    class="bi bi-trash3-fill"></i></button>
+                            <button class="btn btn-sm btn-danger delete-btn" type="submit" value="delete"
+                                delete-data-name="{{$destination->name}}"><i class="bi bi-trash3-fill"></i></button>
                         </form>
                     </td>
                 </tr>
