@@ -66,18 +66,19 @@ class DestinationController extends Controller
 
     public function update(Request $request, $id){
 
+        $formData = $request->all();
         // Find the specific destinaiton with id
         $destination = Destination::findOrFail($id);
 
         // Update from Destination Model
-        $destination->name = $request->input('name');
-        $destination->type = $request->input('type');
-        $destination->description = $request->input('description');
-        $destination->img_url = $request->input('img_url');
-        $destination->trip_duration = $request->input('trip_duration');
-        $destination->avg_vote = $request->input('avg_vote');
-        $destination->tot_person_vote = $request->input('tot_person_vote');
-        $destination->price = $request->input('price');
+        $destination->name = $formData['name'];
+        $destination->type = $formData['type'];
+        $destination->description = $formData['description'];
+        $destination->img_url = $formData['img_url'];
+        $destination->trip_duration = $formData['trip_duration'];
+        $destination->avg_vote = $formData['avg_vote'];
+        $destination->tot_person_vote = $formData['tot_person_vote'];
+        $destination->price = $formData['price'];
 
         // Save destination data në DB
         $destination->update();
