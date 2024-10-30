@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 
-use function Ramsey\Uuid\v1;
 
 class DestinationController extends Controller
 {
@@ -35,7 +34,7 @@ class DestinationController extends Controller
             'description'=>'string',
             'img_url'=>'string',
             'trip_duration'=>'required|string',
-            'avg_vote'=>'required|integer',
+            'avg_vote'=>'required|decimal:1',
             'tot_person_vote'=>'required|integer',
             'price'=>'required|integer',
 
@@ -58,12 +57,13 @@ class DestinationController extends Controller
     }
 
     public function edit(string $id){
+
         $destination = Destination::findOrFail($id);
+
         return view('destinations.edit', compact('destination'));
     }
 
     public function update(Request $request, $id){
-
 
         $formData = $request->all();// Get data from edit form
         $destination = Destination::findOrFail($id);// Find the specific destinaiton with id
@@ -80,6 +80,14 @@ class DestinationController extends Controller
         ]);
 
         // Redirect after save
+        return redirect()->route('destinations.index');
+    }
+
+    public function destroy(string $id){
+
+        $destination = Destination::findOrFail($id);
+        $destination->delete();
+
         return redirect()->route('destinations.index');
     }
 

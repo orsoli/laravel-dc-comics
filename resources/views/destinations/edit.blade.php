@@ -23,8 +23,8 @@
                     <input class="form-control my-2" type="url" name="img_url" value="{{$destination->img_url}}">
                     <input class="form-control my-2" type="text" name="trip_duration"
                         value="{{$destination->trip_duration}}">
-                    <input class="form-control my-2" type="number" min="1" max="5" placeholder="Destination avg Vote"
-                        name="avg_vote" value="{{$destination->avg_vote}}">
+                    <input class="form-control my-2" type="number" step="0.1" min="1" max="5"
+                        placeholder="Destination avg Vote" name="avg_vote" value="{{$destination->avg_vote}}">
                     <input class="form-control my-2" type="number" name="tot_person_vote"
                         value="{{$destination->tot_person_vote}}">
                     <input class="form-control my-2" type="number" name="price" value="{{$destination->price}}">

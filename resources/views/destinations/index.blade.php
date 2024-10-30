@@ -45,7 +45,13 @@
                                 class="bi bi-eye-fill"></i></a>
                         <a href="{{route('destinations.edit', $destination->id)}}" class="btn btn-sm btn-warning"><i
                                 class="bi bi-pencil-fill"></i></a>
-                        <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
+                        <form action="{{route('destinations.destroy', $destination->id)}}" method="POST"
+                            class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger" type="submit" value="delete"><i
+                                    class="bi bi-trash3-fill"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @empty
