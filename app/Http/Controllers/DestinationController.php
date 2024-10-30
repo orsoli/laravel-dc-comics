@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 
+use function Ramsey\Uuid\v1;
+
 class DestinationController extends Controller
 {
     public function index(){
@@ -54,6 +56,11 @@ class DestinationController extends Controller
 
         // Redirect after save
         return redirect()->route('destinations.index');
+    }
+
+    public function edit(string $id){
+        $destination = Destination::findOrFail($id);
+        return view('destinations.edit', compact('destination'));
     }
 
 }

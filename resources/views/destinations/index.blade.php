@@ -74,7 +74,8 @@
                     <td>
                         <a href="{{route('destinations.show', $destination->id)}}" class="btn btn-sm btn-success"><i
                                 class="bi bi-eye-fill"></i></a>
-                        <a href="#" class="btn btn-sm btn-warning"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="{{route('destinations.edit', $destination->id)}}" class="btn btn-sm btn-warning"><i
+                                class="bi bi-pencil-fill"></i></a>
                         <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
                     </td>
                 </tr>
