@@ -42,18 +42,16 @@ class DestinationController extends Controller
         ]);
 
         // Create new instance from Destination Model
-        $destination = new Destination();
-        $destination->name = $request->name;
-        $destination->type = $request->type;
-        $destination->description = $request->description;
-        $destination->img_url = $request->img_url;
-        $destination->trip_duration = $request->trip_duration;
-        $destination->avg_vote = $request->avg_vote;
-        $destination->tot_person_vote = $request->tot_person_vote;
-        $destination->price = $request->price;
-
-        // Save destination data në DB
-        $destination->save();
+        Destination::create([
+            'name'=>$request->input('name'),
+            'type'=>$request->input('type'),
+            'description'=>$request->input('description'),
+            'img_url'=>$request->input('img_url'),
+            'trip_duration'=>$request->input('trip_duration'),
+            'avg_vote'=>$request->input('avg_vote'),
+            'tot_person_vote'=>$request->input('tot_person_vote'),
+            'price'=>$request->input('price'),
+        ]);
 
         // Redirect after save
         return redirect()->route('destinations.index');
@@ -66,22 +64,20 @@ class DestinationController extends Controller
 
     public function update(Request $request, $id){
 
-        $formData = $request->all();
-        // Find the specific destinaiton with id
-        $destination = Destination::findOrFail($id);
 
-        // Update from Destination Model
-        $destination->name = $formData['name'];
-        $destination->type = $formData['type'];
-        $destination->description = $formData['description'];
-        $destination->img_url = $formData['img_url'];
-        $destination->trip_duration = $formData['trip_duration'];
-        $destination->avg_vote = $formData['avg_vote'];
-        $destination->tot_person_vote = $formData['tot_person_vote'];
-        $destination->price = $formData['price'];
+        $formData = $request->all();// Get data from edit form
+        $destination = Destination::findOrFail($id);// Find the specific destinaiton with id
 
-        // Save destination data në DB
-        $destination->update();
+        $destination->update([
+            'name'=>$formData['name'],
+            'type'=>$formData['type'],
+            'description'=>$formData['description'],
+            'img_url'=>$formData['img_url'],
+            'trip_duration'=>$formData['trip_duration'],
+            'avg_vote'=>$formData['avg_vote'],
+            'tot_person_vote'=>$formData['tot_person_vote'],
+            'price'=>$formData['price'],
+        ]);
 
         // Redirect after save
         return redirect()->route('destinations.index');
