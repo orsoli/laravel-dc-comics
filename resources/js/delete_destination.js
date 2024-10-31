@@ -1,7 +1,7 @@
 const deleteButton = document.querySelectorAll(".delete-btn");
 
 deleteButton.forEach((element) => {
-    element.closest("form").addEventListener("submit", (e) => {
+    element.closest("form").addEventListener("submit", function (e) {
         e.preventDefault();
 
         const confirm = window.confirm(
@@ -9,7 +9,7 @@ deleteButton.forEach((element) => {
         );
 
         if (confirm) {
-            e.target.submit();
+            this.submit();
         }
     });
 });

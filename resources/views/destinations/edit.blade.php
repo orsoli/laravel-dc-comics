@@ -6,6 +6,11 @@
 @section('main-content')
 <main>
     <div class="container d-flex flex-column justify-content-center align-items-center">
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <p class="text-danger"><small>{{$error}}</small></p>
+        @endforeach
+        @endif
         <div class="title">
             <h1 class="py-5">Edit Destination</h1>
         </div>

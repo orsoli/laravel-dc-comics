@@ -29,28 +29,19 @@ class DestinationController extends Controller
     {
         // Request Validation
         $request->validate([
-            'name' => 'required|string',
-            'type'=>'required|string',
-            'description'=>'string',
-            'img_url'=>'string',
-            'trip_duration'=>'required|string',
-            'avg_vote'=>'required|decimal:1',
+            'name' => 'required|string|min:3|max:10',
+            'type'=>'required|string|min:3|max:50',
+            'description'=>'required|string',
+            'img_url'=>'url',
+            'trip_duration'=>'required|string|min:3|max:100',
+            'avg_vote'=>'required|numeric|max:5',
             'tot_person_vote'=>'required|integer',
-            'price'=>'required|integer',
+            'price'=>'required|integer|min:1',
 
         ]);
 
         // Create new instance from Destination Model
-        Destination::create([
-            'name'=>$request->input('name'),
-            'type'=>$request->input('type'),
-            'description'=>$request->input('description'),
-            'img_url'=>$request->input('img_url'),
-            'trip_duration'=>$request->input('trip_duration'),
-            'avg_vote'=>$request->input('avg_vote'),
-            'tot_person_vote'=>$request->input('tot_person_vote'),
-            'price'=>$request->input('price'),
-        ]);
+        $destination = Destination::create($request);
 
         // Redirect after save
         return redirect()->route('destinations.index');
@@ -65,19 +56,23 @@ class DestinationController extends Controller
 
     public function update(Request $request, $id){
 
+        // Request Validation
+        $request->validate([
+            'name' => 'required|string|min:3|max:10',
+            'type'=>'required|string|min:3|max:50',
+            'description'=>'required|string',
+            'img_url'=>'url',
+            'trip_duration'=>'required|string|min:3|max:100',
+            'avg_vote'=>'required|numeric|max:5',
+            'tot_person_vote'=>'required|integer',
+            'price'=>'required|integer|min:1',
+
+        ]);
         $formData = $request->all();// Get data from edit form
+
         $destination = Destination::findOrFail($id);// Find the specific destinaiton with id
 
-        $destination->update([
-            'name'=>$formData['name'],
-            'type'=>$formData['type'],
-            'description'=>$formData['description'],
-            'img_url'=>$formData['img_url'],
-            'trip_duration'=>$formData['trip_duration'],
-            'avg_vote'=>$formData['avg_vote'],
-            'tot_person_vote'=>$formData['tot_person_vote'],
-            'price'=>$formData['price'],
-        ]);
+        $destination->update($formData);
 
         // Redirect after save
         return redirect()->route('destinations.index');
