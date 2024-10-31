@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class storeDestinationRequest extends FormRequest
+class StoreDestinationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,7 +38,7 @@ class storeDestinationRequest extends FormRequest
      * Get Messagges for every rules
      * @return string,
      */
-    public function errorMessages(){
+    public function messages(){
         return [
             'name.required' => 'Name is a required field',
             'name.min' => 'Name must be greater than 3 chars',

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDestinationRequest;
 use App\Models\Destination;
-use Illuminate\Http\Request;
 
 
 class DestinationController extends Controller
@@ -25,26 +25,11 @@ class DestinationController extends Controller
         return view('destinations.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreDestinationRequest $request)
     {
-        // Request Validation
-        $request->validate([
-            'name' => 'required|string|min:3|max:50',
-            'type'=>'required|string|min:3|max:50',
-            'description'=>'required|string',
-            'img_url'=>'url',
-            'trip_duration'=>'required|string|min:3|max:100',
-            'avg_vote'=>'required|numeric|max:5',
-            'tot_person_vote'=>'required|integer',
-            'price'=>'required|integer|min:1',
-
-        ]);
-
-        $data = $request->all();// Get data from edit form
-        // Create new instance from Destination Model
+        $data = $request->all();
         $destination = Destination::create($data);
 
-        // Redirect after save
         return redirect()->route('destinations.index');
     }
 
@@ -55,28 +40,12 @@ class DestinationController extends Controller
         return view('destinations.edit', compact('destination'));
     }
 
-    public function update(Request $request, $id){
-
-        // Request Validation
-        $request->validate([
-            'name' => 'required|string|min:3|max:50',
-            'type'=>'required|string|min:3|max:50',
-            'description'=>'required|string',
-            'img_url'=>'url',
-            'trip_duration'=>'required|string|min:3|max:100',
-            'avg_vote'=>'required|numeric|max:5',
-            'tot_person_vote'=>'required|integer',
-            'price'=>'required|integer|min:1',
-
-        ]);
+    public function update(StoreDestinationRequest $request, $id){
 
         $data = $request->all();// Get data from edit form
-
-        $destination = Destination::findOrFail($id);// Find the specific destinaiton with id
-
+        $destination = Destination::findOrFail($id);
         $destination->update($data);
 
-        // Redirect after save
         return redirect()->route('destinations.index');
     }
 
