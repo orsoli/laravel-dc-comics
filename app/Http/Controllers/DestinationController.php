@@ -29,7 +29,7 @@ class DestinationController extends Controller
     {
         // Request Validation
         $request->validate([
-            'name' => 'required|string|min:3|max:10',
+            'name' => 'required|string|min:3|max:50',
             'type'=>'required|string|min:3|max:50',
             'description'=>'required|string',
             'img_url'=>'url',
@@ -40,8 +40,9 @@ class DestinationController extends Controller
 
         ]);
 
+        $data = $request->all();// Get data from edit form
         // Create new instance from Destination Model
-        $destination = Destination::create($request);
+        $destination = Destination::create($data);
 
         // Redirect after save
         return redirect()->route('destinations.index');
@@ -58,7 +59,7 @@ class DestinationController extends Controller
 
         // Request Validation
         $request->validate([
-            'name' => 'required|string|min:3|max:10',
+            'name' => 'required|string|min:3|max:50',
             'type'=>'required|string|min:3|max:50',
             'description'=>'required|string',
             'img_url'=>'url',
@@ -68,11 +69,12 @@ class DestinationController extends Controller
             'price'=>'required|integer|min:1',
 
         ]);
-        $formData = $request->all();// Get data from edit form
+
+        $data = $request->all();// Get data from edit form
 
         $destination = Destination::findOrFail($id);// Find the specific destinaiton with id
 
-        $destination->update($formData);
+        $destination->update($data);
 
         // Redirect after save
         return redirect()->route('destinations.index');
