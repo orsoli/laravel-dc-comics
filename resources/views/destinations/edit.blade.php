@@ -21,21 +21,24 @@
                 @method('PUT')
 
                 <div class="inputs p-2">
-                    <input class="form-control my-2" type="text" name="name" value="{{$destination->name}}">
-                    <input class="form-control my-2" type="text" name="type" value="{{$destination->type}}">
+                    <input class="form-control my-2" type="text" name="name" value="{{old('name',$destination->name)}}">
+                    <input class="form-control my-2" type="text" name="type" value="{{old('type',$destination->type)}}">
                     <textarea class="form-control" name="description" rows="3"
-                        cols="50">{{$destination->description}}</textarea>
-                    <input class="form-control my-2" type="url" name="img_url" value="{{$destination->img_url}}">
+                        cols="50">{{old('decription',$destination->description)}}</textarea>
+                    <input class="form-control my-2" type="url" name="img_url"
+                        value="{{old('img_url',$destination->img_url)}}">
                     <input class="form-control my-2" type="text" name="trip_duration"
-                        value="{{$destination->trip_duration}}">
+                        value="{{old('trip_duration',$destination->trip_duration)}}">
                     <input class="form-control my-2" type="number" step="0.1" min="1" max="5"
-                        placeholder="Destination avg Vote" name="avg_vote" value="{{$destination->avg_vote}}">
+                        placeholder="Destination avg Vote" name="avg_vote"
+                        value="{{old('avg_vote',$destination->avg_vote)}}">
                     <input class="form-control my-2" type="number" name="tot_person_vote"
-                        value="{{$destination->tot_person_vote}}">
-                    <input class="form-control my-2" type="number" name="price" value="{{$destination->price}}">
+                        value="{{old('tot_person_vote',$destination->tot_person_vote)}}">
+                    <input class="form-control my-2" type="number" name="price"
+                        value="{{old('price',$destination->price)}}">
                 </div>
                 <div class="btns p-2">
-                    <button type="submit" class="btn btn-primary">Update destination</button>
+                    <button type="submit" class="btn btn-primary">Update {{$destination->name}}</button>
                     <button type="reset" class="btn btn-warning">reset</button>
                 </div>
             </form>

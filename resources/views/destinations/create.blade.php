@@ -20,19 +20,25 @@
             <form action="{{route('destinations.store')}}" method="post" class="form-control mb-5 shadow">
                 @csrf
                 <div class="inputs p-2">
-                    <input class="form-control my-2" type="text" placeholder="Destinaiton Name" name="name">
-                    <input class="form-control my-2" type="text" placeholder="Destinaiton type" name="type">
+                    <input class="form-control my-2" type="text" placeholder="Destinaiton Name" name="name"
+                        value="{{old('name')}}">
+                    <input class="form-control my-2" type="text" placeholder="Destinaiton type" name="type"
+                        value="{{old('type')}}">
                     <textarea class="form-control" name="description" rows="3" cols="50"
-                        placeholder="Destination description"></textarea>
-                    <input class="form-control my-2" type="url" placeholder="Destinaiton img" name="img_url">
-                    <input class="form-control my-2" type="text" placeholder="Trip duration" name="trip_duration">
-                    <input class="form-control my-2" type="number" placeholder="Destination avg Vote" name="avg_vote">
+                        placeholder="Destination description">{{old('description')}}</textarea>
+                    <input class="form-control my-2" type="url" placeholder="Destinaiton img" name="img_url"
+                        value="{{old('img_url')}}">
+                    <input class="form-control my-2" type="text" placeholder="Trip duration" name="trip_duration"
+                        value="{{old('trip_duration')}}">
+                    <input class="form-control my-2" type="number" placeholder="Destination avg Vote" name="avg_vote"
+                        value="{{old('avg_vote')}}">
                     <input class="form-control my-2" type="number" placeholder="Destination TOT persons vote"
-                        name="tot_person_vote">
-                    <input class="form-control my-2" type="number" placeholder="Price" name="price">
+                        name="tot_person_vote" value="{{old('tot_person_vote')}}">
+                    <input class="form-control my-2" type="number" placeholder="Price" name="price"
+                        value="{{old('price')}}">
                 </div>
                 <div class="btns p-2">
-                    <button type="submit" class="btn btn-primary">Save destination</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                     <button type="reset" class="btn btn-warning">reset</button>
                 </div>
             </form>
