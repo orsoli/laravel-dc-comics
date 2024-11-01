@@ -17,7 +17,14 @@ class DestinationController extends Controller
 
     public function show($id){
         $destination = Destination::findOrFail($id);
-        return view('destinations.show', compact('destination'));
+
+        // Calcolate stars for review
+        $fullStar = floor($destination->avg_vote);
+        $halfStar = ($destination->avg_vote - $fullStar) >= 0.5?  1 : 0;
+        $emptyStar = 5 - $fullStar - $halfStar;
+
+
+        return view('destinations.show', compact('destination','fullStar', 'halfStar', 'emptyStar'));
     }
 
     public function create()

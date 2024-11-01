@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('page-description','Show destination page')
-@section('page-name', 'Destination')
+@section('page-name')
+{{$destination->name}}
+@endsection
 
 @section('main-content')
 <main>
@@ -12,16 +14,13 @@
                 <p class="card-text">
                     <small class="text-body-secondary">
                         {{-- Check if is decimal number --}}
-                        @if ($destination->avg_vote % 1 === 0)
-                        @for ($i = 1; $i < $destination->avg_vote; $i++)
-                            <i class="bi bi-star-fill text-warning"></i>
+                        @for ($i = 1; $i <= $fullStar; $i++) <i class="bi bi-star-fill text-warning"></i>
                             @endfor
-                            @else
-                            @for ($i = 1; $i <= $destination->avg_vote; $i++)
-                                <i class="bi bi-star-fill text-warning"></i>
+                            @if ($halfStar)
+                            <i class="bi bi-star-half text-warning"></i>
+                            @endif
+                            @for ($i = 1; $i <= $emptyStar; $i++) <i class="bi bi-star text-warning"></i>
                                 @endfor
-                                <i class="bi bi-star-half text-warning"></i>
-                                @endif
                                 {{$destination->avg_vote}}
                                 ({{$destination->tot_person_vote}})
                     </small>

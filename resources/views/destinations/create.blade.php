@@ -12,6 +12,7 @@
         <div class="create-form">
             <form action="{{route('destinations.store')}}" method="post" class="form-control mb-5 shadow">
                 @csrf
+
                 <div class="inputs p-2">
                     <div class="name">
                         <input class="form-control my-2" type="text" placeholder="Destinaiton Name" name="name"
@@ -49,7 +50,7 @@
                         @enderror
                     </div>
                     <div class="vote">
-                        <input class="form-control my-2" type="number" placeholder="Destination avg Vote"
+                        <input class="form-control my-2" type="number" step="0.1" placeholder="Destination avg Vote"
                             name="avg_vote" value="{{old('avg_vote')}}">
                         @error("avg_vote")
                         <p class="text-danger"><small>{{$message}}</small></p>
