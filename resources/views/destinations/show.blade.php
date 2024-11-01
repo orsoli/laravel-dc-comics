@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
-@section('page-description','Show destination page')
+@section('page-description')
+{{$destination->name}} is an Albanian Top Destination
+@endsection
+
 @section('page-name')
 {{$destination->name}}
 @endsection
