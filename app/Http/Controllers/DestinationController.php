@@ -20,7 +20,7 @@ class DestinationController extends Controller
 
         // Calcolate stars for review
         $fullStar = floor($destination->avg_vote);
-        $halfStar = ($destination->avg_vote - $fullStar) >= 0.5?  1 : 0;
+        $halfStar = ($destination->avg_vote - $fullStar) >= 0.4?  1 : 0;
         $emptyStar = 5 - $fullStar - $halfStar;
 
 
