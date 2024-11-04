@@ -64,4 +64,9 @@ class DestinationController extends Controller
         return redirect()->route('destinations.index');
     }
 
+    public function trashed(){
+        $deletedDestinations = Destination :: onlyTrashed()->get();
+        return view('pages.trash', compact('deletedDestinations'));
+    }
+
 }

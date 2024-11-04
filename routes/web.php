@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/', DestinationController::class);
 Route::resource('destinations', DestinationController::class);
+
+Route::get('/trash', [DestinationController::class, 'trashed'])->name('trash');
